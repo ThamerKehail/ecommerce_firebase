@@ -1,4 +1,4 @@
-import 'package:firebase_ecommerce/view/sign_up.dart';
+import 'package:firebase_ecommerce/view/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
