@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ecommerce/utils/router.dart';
 import 'package:firebase_ecommerce/view/screens/auth/sign_up_screen.dart';
 import 'package:firebase_ecommerce/view/screens/auth/auth_view_model.dart';
+import 'package:firebase_ecommerce/view/screens/home/home_view_model.dart';
+import 'package:firebase_ecommerce/view/screens/product_details/product_details_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SignupViewModel()),
+        ChangeNotifierProvider(create: (_) => HomeViewModel()),
+        ChangeNotifierProvider(create: (_) => ProductDetailsViewModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
