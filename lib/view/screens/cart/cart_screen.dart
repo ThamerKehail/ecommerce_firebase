@@ -1,3 +1,4 @@
+import 'package:firebase_ecommerce/utils/routes.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/card_cart_product.dart';
@@ -18,7 +19,9 @@ class CartScreen extends StatelessWidget {
             backgroundColor: Colors.deepPurple,
           ),
           child: const Text("Continue"),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, AppRoutes.checkoutScreen);
+          },
         ),
       ),
       appBar: AppBar(

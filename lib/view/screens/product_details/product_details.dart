@@ -35,142 +35,145 @@ class ProductDetailsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const ProductDetailsCard(img: 'assets/images/man.jpg'),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "T-chert Man",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const ProductDetailsCard(img: 'assets/images/man.jpg'),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const Text(
-              "150 JOD",
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 15,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Description",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            const Text(
-                "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release"),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "Size",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 50,
-              child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: productDetails.size.length,
-                  separatorBuilder: (context, index) => const SizedBox(
-                        width: 8,
-                      ),
-                  itemBuilder: (context, index) {
-                    return CustomCardWidget(
-                      text: productDetails.size[index],
-                      color: Colors.grey[100]!,
-                    );
-                  }),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Color",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 50,
-              child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: productDetails.size.length,
-                  separatorBuilder: (context, index) => const SizedBox(
-                        width: 8,
-                      ),
-                  itemBuilder: (context, index) {
-                    return CustomCardWidget(
-                      color: productDetails.color[index],
-                    );
-                  }),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Quantity",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            QuantityCard(
-                q: productDetails.quantity,
-                add: () {
-                  productDetails.addQuantity();
-                },
-                remove: () {
-                  productDetails.removeQuantity();
-                }),
-            const SizedBox(height: 10),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, AppRoutes.cartScreen);
-              },
-              child: Container(
-                width: double.infinity,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.redAccent,
+              const Text(
+                "T-chert Man",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
-                child: const Center(
-                  child: Text(
-                    "Check out",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const Text(
+                "150 JOD",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 15,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Description",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              const Text(
+                  "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release"),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                "Size",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 50,
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: productDetails.size.length,
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 8,
+                        ),
+                    itemBuilder: (context, index) {
+                      return CustomCardWidget(
+                        text: productDetails.size[index],
+                        color: Colors.grey[100]!,
+                      );
+                    }),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Color",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 50,
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: productDetails.size.length,
+                    separatorBuilder: (context, index) => const SizedBox(
+                          width: 8,
+                        ),
+                    itemBuilder: (context, index) {
+                      return CustomCardWidget(
+                        color: productDetails.color[index],
+                      );
+                    }),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Quantity",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              QuantityCard(
+                  q: productDetails.quantity,
+                  add: () {
+                    productDetails.addQuantity();
+                  },
+                  remove: () {
+                    productDetails.removeQuantity();
+                  }),
+              const SizedBox(height: 10),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, AppRoutes.cartScreen);
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.redAccent,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Check out",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

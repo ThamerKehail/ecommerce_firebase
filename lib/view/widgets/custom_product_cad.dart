@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomProductCad extends StatelessWidget {
   final String img;
-  final int price;
+  final double price;
   final String title;
   const CustomProductCad(
       {Key? key, required this.img, required this.price, required this.title})
@@ -26,7 +26,7 @@ class CustomProductCad extends StatelessWidget {
                 width: 160,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(img),
+                    image: NetworkImage(img),
                   ),
                 ),
               ),

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_ecommerce/utils/routes.dart';
 import 'package:firebase_ecommerce/view/screens/home/home_view_model.dart';
+import 'package:firebase_ecommerce/view/screens/list_product/list_product_screen.dart';
 import 'package:firebase_ecommerce/view/widgets/custom_product_cad.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -96,24 +98,54 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 65,
+                  height: 15,
+                ),
+                SizedBox(
+                  height: 100,
                   child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 7,
+                      itemCount: home.categories.length,
                       separatorBuilder: (context, index) => const SizedBox(
                             width: 13,
                           ),
                       itemBuilder: (context, index) {
-                        return const CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.blue,
-                          child: Center(
-                            child: Icon(
-                              Icons.person_outline,
-                              size: 40,
-                            ),
-                          ),
-                        );
+                        return FutureBuilder(
+                            future: FirebaseFirestore.instance
+                                .collection('category')
+                                .doc('RMnujiR0kCcqVxxBq4sv')
+                                .collection(home.categories[index].onTap)
+                                .get(),
+                            builder: (context, snapshot) {
+                              print(snapshot.data!.docs.isEmpty);
+                              return InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => ListProductScreen(
+                                                snapshot: snapshot,
+                                              )));
+                                },
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: Colors.blue,
+                                      child: Center(
+                                        child: Icon(
+                                          home.categories[index].icon,
+                                          size: 40,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    Text(home.categories[index].name),
+                                  ],
+                                ),
+                              );
+                            });
                       }),
                 ),
                 const SizedBox(
@@ -122,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       "Featured",
                       style: TextStyle(
                         fontSize: 18,
@@ -134,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                         Navigator.pushNamed(
                             context, AppRoutes.listProductScreen);
                       },
-                      child: Text(
+                      child: const Text(
                         "See all",
                         style: TextStyle(
                           fontSize: 18,

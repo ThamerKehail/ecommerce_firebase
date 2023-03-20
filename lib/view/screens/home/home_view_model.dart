@@ -1,3 +1,4 @@
+import 'package:firebase_ecommerce/model/category_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,4 +38,12 @@ class HomeViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  final List<CategoryModel> categories = [
+    CategoryModel(name: "Shirt", onTap: 'shirt', icon: Icons.person),
+    CategoryModel(name: "Dress", onTap: 'dress', icon: Icons.person),
+    CategoryModel(name: "Pant", onTap: 'pant', icon: Icons.person),
+    CategoryModel(name: "Shoes", onTap: 'shoes', icon: Icons.person),
+    CategoryModel(name: "Tie", onTap: 'tie', icon: Icons.person),
+  ];
 }

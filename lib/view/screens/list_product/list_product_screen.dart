@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/custom_product_cad.dart';
 
 class ListProductScreen extends StatelessWidget {
-  const ListProductScreen({Key? key}) : super(key: key);
+  final snapshot;
+  const ListProductScreen({Key? key, required this.snapshot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +40,14 @@ class ListProductScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Featured",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Featured",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Expanded(
@@ -52,15 +57,15 @@ class ListProductScreen extends StatelessWidget {
                   mainAxisSpacing: 10,
                   childAspectRatio: 0.7,
                 ),
-                itemCount: 8,
+                itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
                   return CustomProductCad(
-                      img: 'assets/images/man.jpg',
-                      price: 120,
-                      title: "Man long T-shirt");
+                      img: snapshot.data!.docs[index]['image'],
+                      price: snapshot.data!.docs[index]['price'],
+                      title: snapshot.data!.docs[index]['name']);
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
